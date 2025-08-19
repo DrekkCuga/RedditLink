@@ -10,8 +10,8 @@ REDDIT = praw.Reddit(
         client_id=os.environ["R_CL_ID"],
         client_secret=os.environ["R_CL_SECRET"],
         password=os.environ["R_PASS"],
-        user_agent="Reddit Saved Archiver by HydraxTheDragon",
-        username="HydraxTheDragon",
+        user_agent=f"Reddit Saved Archiver by {os.environ["R_USER"]}",
+        username=os.environ["R_USER"],
     )
 
 def downloadImage(url):
