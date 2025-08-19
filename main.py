@@ -3,8 +3,8 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 from datetime import datetime
 from dotenv import load_dotenv
 
-db_filename = "posts.json"
 load_dotenv()
+db_filename = os.environ["DB_FILE"]
 
 REDDIT = praw.Reddit(
         client_id=os.environ["R_CL_ID"],
