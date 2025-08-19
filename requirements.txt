@@ -1,0 +1,3 @@
+discord-webhook
+praw
+python-dotenv
