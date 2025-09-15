@@ -26,6 +26,11 @@ def handlePost(post):
 
     if post.url.startswith("https://www.reddit.com/gallery/"):
         firstItem = True
+        try:
+            a = post.gallery_data
+        except:
+            return #No gallery data
+        
         if len(post.gallery_data["items"]) > 10:
             return #We can't post more than 10 in a single message
         
