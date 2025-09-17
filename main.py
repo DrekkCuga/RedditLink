@@ -29,10 +29,10 @@ def handlePost(post):
         try:
             a = post.gallery_data
         except:
-            return #No gallery data
+            return True #No gallery data, ignore
         
         if len(post.gallery_data["items"]) > 10:
-            return #We can't post more than 10 in a single message
+            return True #We can't post more than 10 in a single message
         
         for item in post.gallery_data["items"]:
             id = item["media_id"]
@@ -85,6 +85,7 @@ def loop():
             fetch()
             print(f"{datetime.now()} - Finished Fetch")
         except Exception as e:
+            print("ERROR:")
             print(e)
         time.sleep(60)
 
