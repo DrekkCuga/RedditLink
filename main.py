@@ -69,12 +69,18 @@ def fetch():
     for post in saved:
         if post.id in db:
             continue
-
-        if handlePost(post):
-            db.append(post.id)
-            print(f"Pushed post '{post.id}'")
-        else:
-            print(f"Failed to push post '{post.id}'")
+        
+        handled = False
+        try:
+            handled = handlePost(post)
+        except Exception as e:
+            print("Exception while handling post: " + post.id)
+            print(e)
+        
+        if not handled:
+            print(f"Failed to handle post '{post.id}'")
+            
+        db.append(post.id)
 
     with open(db_filename, "w") as f:
         json.dump(db, f)
